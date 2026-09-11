@@ -1,477 +1,390 @@
-// --- DATA ---
+// DONNÉES PRODUITS
 const products = [
-    { id: 1, name: "T-Shirt Essentiel", category: "T-Shirts", gender: "Homme", price: 249, isNew: false, img: "https://placehold.co/400x500/D8C7B0/2C211B?text=T-Shirt+Essentiel" },
-    { id: 2, name: "Sweat Oversize", category: "Sweats à capuche", gender: "Homme", price: 499, isNew: true, img: "https://placehold.co/400x500/D8C7B0/2C211B?text=Sweat+Oversize" },
-    { id: 3, name: "Pantalon Street", category: "Pantalons", gender: "Homme", price: 399, isNew: false, img: "https://placehold.co/400x500/D8C7B0/2C211B?text=Pantalon+Street" },
-    { id: 4, name: "Veste Signature", category: "Vestes", gender: "Femme", price: 699, isNew: true, img: "https://placehold.co/400x500/D8C7B0/2C211B?text=Veste+Signature" },
-    { id: 5, name: "T-Shirt Basic", category: "T-Shirts", gender: "Femme", price: 199, isNew: false, img: "https://placehold.co/400x500/D8C7B0/2C211B?text=T-Shirt+Basic" },
-    { id: 6, name: "Sweat Urban", category: "Sweats à capuche", gender: "Femme", price: 449, isNew: false, img: "https://placehold.co/400x500/D8C7B0/2C211B?text=Sweat+Urban" },
-    { id: 7, name: "T-Shirt Premium", category: "T-Shirts", gender: "Homme", price: 299, isNew: false, img: "https://placehold.co/400x500/D8C7B0/2C211B?text=T-Shirt+Premium" },
-    { id: 8, name: "Pantalon Essential", category: "Pantalons", gender: "Femme", price: 429, isNew: false, img: "https://placehold.co/400x500/D8C7B0/2C211B?text=Pantalon+Essential" },
-    { id: 9, name: "Veste Urban", category: "Vestes", gender: "Homme", price: 599, isNew: false, img: "https://placehold.co/400x500/D8C7B0/2C211B?text=Veste+Urban" },
-    { id: 10, name: "Sweat Signature", category: "Sweats à capuche", gender: "Femme", price: 549, isNew: true, img: "https://placehold.co/400x500/D8C7B0/2C211B?text=Sweat+Signature" },
-    { id: 11, name: "Casquette NORVA", category: "Accessoires", gender: "Tous", price: 179, isNew: false, img: "https://placehold.co/400x500/D8C7B0/2C211B?text=Casquette+NORVA" },
-    { id: 12, name: "Sac NORVA", category: "Accessoires", gender: "Tous", price: 299, isNew: true, img: "https://placehold.co/400x500/D8C7B0/2C211B?text=Sac+NORVA" }
+    { id: 1, name: "NORVA Essential T-Shirt", category: "t-shirts", gender: "homme", price: 249, img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80", isNew: false, desc: "Le t-shirt essentiel. Coupe parfaite, coton premium 100% bio. Minimaliste et élégant." },
+    { id: 2, name: "NORVA Oversized Hoodie", category: "hoodies", gender: "unisex", price: 499, img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&q=80", isNew: true, desc: "Hoodie coupe oversized, tissu lourd pour un tombé parfait. Le confort absolu avec style." },
+    { id: 3, name: "NORVA Street Pants", category: "pantalons", gender: "homme", price: 399, img: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&q=80", isNew: false, desc: "Pantalon cargo revisité. Lignes épurées, multipoches fonctionnelles, style urbain." },
+    { id: 4, name: "NORVA Signature Jacket", category: "vestes", gender: "homme", price: 699, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500&q=80", isNew: true, desc: "Veste signature NORVA. Imperméable, légère, avec détails réfléchissants subtils." },
+    { id: 5, name: "NORVA Basic Tee Femme", category: "t-shirts", gender: "femme", price: 199, img: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=500&q=80", isNew: false, desc: "T-shirt ajusté pour femme. Doux, durable et conçu pour le quotidien." },
+    { id: 6, name: "NORVA Urban Hoodie", category: "hoodies", gender: "femme", price: 449, img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80", isNew: false, desc: "Hoodie court urbain. Design moderne avec capuche ample." },
+    { id: 7, name: "NORVA Wide Leg Pants", category: "pantalons", gender: "femme", price: 349, img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&q=80", isNew: true, desc: "Pantalon large fluide. Élégance minimaliste pour un look streetwear chic." },
+    { id: 8, name: "NORVA Puffer Vest", category: "vestes", gender: "unisex", price: 549, img: "https://images.unsplash.com/photo-1574880598687-83c81e375ab2?w=500&q=80", isNew: true, desc: "Gilet matelassé sans manches. Idéal pour le layering urbain." },
+    { id: 9, name: "NORVA Beanie", category: "accessoires", gender: "unisex", price: 149, img: "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=500&q=80", isNew: false, desc: "Bonnet en laine mérinos mélangée. Logo brodé ton sur ton." },
+    { id: 10, name: "NORVA Crossbody Bag", category: "accessoires", gender: "unisex", price: 299, img: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500&q=80", isNew: true, desc: "Sac bandoulière compact. Sangle ajustable et rangements optimisés." },
+    { id: 11, name: "NORVA Graphic Tee", category: "t-shirts", gender: "homme", price: 259, img: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&q=80", isNew: false, desc: "T-shirt avec motif typographique exclusif NORVA." },
+    { id: 12, name: "NORVA Tech Jogger", category: "pantalons", gender: "homme", price: 429, img: "https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?w=500&q=80", isNew: false, desc: "Jogger technique. Tissu extensible, coupe fuselée pour un maximum de confort." }
 ];
 
-// --- STATE ---
+// STATE MANAGEMENT (LocalStorage)
 let cart = JSON.parse(localStorage.getItem('norva_cart')) || [];
-let favorites = JSON.parse(localStorage.getItem('norva_favorites')) || [];
-let currentFilter = "Tous";
-let currentSort = "default";
-let searchQuery = "";
+let favorites = JSON.parse(localStorage.getItem('norva_favs')) || [];
+let currentFilter = 'all';
 
-// --- DOM ELEMENTS ---
-const mainShopGrid = document.getElementById('main-shop-grid');
+// DOM ELEMENTS
+const views = document.querySelectorAll('.view');
+const mainProductGrid = document.getElementById('main-product-grid');
 const newCollectionGrid = document.getElementById('new-collection-grid');
-const cartBadge = document.getElementById('cart-badge');
-const favBadge = document.getElementById('fav-badge');
-const overlayBg = document.getElementById('overlay-bg');
+const favoritesGrid = document.getElementById('favorites-grid');
+const cartCount = document.getElementById('cart-count');
+const favCount = document.getElementById('fav-count');
 const cartSidebar = document.getElementById('cart-sidebar');
-const favSidebar = document.getElementById('fav-sidebar');
+const sidebarOverlay = document.getElementById('sidebar-overlay');
+const cartItemsContainer = document.getElementById('cart-items');
+const cartTotalPrice = document.getElementById('cart-total-price');
 const productModal = document.getElementById('product-modal');
-const checkoutModal = document.getElementById('checkout-modal');
-const noProductsMsg = document.getElementById('no-products-msg');
+const modalBody = document.getElementById('modal-body-content');
 
-// --- INIT ---
+// INITIALIZATION
 document.addEventListener('DOMContentLoaded', () => {
-    renderMainShop();
-    renderNewCollection();
     updateBadges();
-    renderCart();
-    renderFavorites();
+    renderProducts(products.filter(p => p.isNew).slice(0,4), newCollectionGrid);
+    renderProducts(products, mainProductGrid);
+    setupEventListeners();
 });
 
-// --- RENDER FUNCTIONS ---
-function createProductCardHTML(product) {
-    const isFav = favorites.some(fav => fav.id === product.id);
-    return `
-        <div class="product-card" data-id="${product.id}">
-            <div class="product-img-container" onclick="openProductModal(${product.id})">
-                ${product.isNew ? '<span class="badge-new">Nouveauté</span>' : ''}
+// ROUTING / VIEW SWITCHER
+function switchView(viewId) {
+    views.forEach(view => view.classList.add('hidden'));
+    document.getElementById(`view-${viewId}`).classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    if(viewId === 'shop') renderShop();
+    if(viewId === 'favorites') renderFavoritesView();
+    if(viewId === 'checkout') renderCheckoutSummary();
+}
+
+// RENDER PRODUCTS
+function renderProducts(items, container) {
+    container.innerHTML = '';
+    if(items.length === 0) {
+        if(container === mainProductGrid) document.getElementById('no-products-msg').classList.remove('hidden');
+        return;
+    }
+    if(container === mainProductGrid) document.getElementById('no-products-msg').classList.add('hidden');
+
+    items.forEach(product => {
+        const isFav = favorites.includes(product.id);
+        const card = document.createElement('div');
+        card.className = 'product-card fade-in';
+        card.innerHTML = `
+            <div class="product-img-wrapper" onclick="openProductModal(${product.id})">
+                ${product.isNew ? '<span class="badge-new">NEW</span>' : ''}
                 <img src="${product.img}" alt="${product.name}">
-            </div>
-            <button class="btn-fav-card ${isFav ? 'active' : ''}" onclick="toggleFavorite(${product.id}, event)">
-                <i class="${isFav ? 'fas' : 'far'} fa-heart"></i>
-            </button>
-            <div class="product-info">
-                <div>
-                    <div class="product-category">${product.category}</div>
-                    <div class="product-title">${product.name}</div>
-                    <div class="product-price">${product.price} MAD</div>
+                <div class="add-to-cart-overlay">
+                    <button class="btn btn-primary" onclick="event.stopPropagation(); addToCart(${product.id})">AJOUTER AU PANIER</button>
                 </div>
-                <button class="btn-add-cart" onclick="addToCart(${product.id})">AJOUTER AU PANIER</button>
             </div>
-        </div>
-    `;
-}
-
-function renderMainShop() {
-    let filtered = products.filter(p => {
-        let matchFilter = true;
-        if (currentFilter !== "Tous") {
-            if (currentFilter === "Homme" || currentFilter === "Femme") {
-                matchFilter = (p.gender === currentFilter || p.gender === "Tous");
-            } else {
-                matchFilter = p.category === currentFilter;
-            }
-        }
-        let matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          p.category.toLowerCase().includes(searchQuery.toLowerCase());
-        return matchFilter && matchSearch;
+            <button class="fav-btn-card ${isFav ? 'active' : ''}" onclick="toggleFavorite(${product.id}, this)">
+                <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+            </button>
+            <div class="product-info" onclick="openProductModal(${product.id})">
+                <p class="product-cat">${product.category} · ${product.gender}</p>
+                <h3 class="product-name">${product.name}</h3>
+                <p class="product-price">${product.price} MAD</p>
+            </div>
+        `;
+        container.appendChild(card);
     });
+}
 
-    if (currentSort === "price-asc") filtered.sort((a, b) => a.price - b.price);
-    if (currentSort === "price-desc") filtered.sort((a, b) => b.price - a.price);
-    if (currentSort === "new") filtered.sort((a, b) => (b.isNew === true ? 1 : 0) - (a.isNew === true ? 1 : 0));
-
-    if (filtered.length === 0) {
-        mainShopGrid.innerHTML = '';
-        noProductsMsg.classList.remove('hidden');
-    } else {
-        noProductsMsg.classList.add('hidden');
-        mainShopGrid.innerHTML = filtered.map(createProductCardHTML).join('');
+// FILTER & SORT
+function renderShop() {
+    let filtered = products;
+    if (currentFilter !== 'all') {
+        if (['homme', 'femme'].includes(currentFilter)) {
+            filtered = products.filter(p => p.gender === currentFilter || p.gender === 'unisex');
+        } else if (currentFilter === 'new') {
+            filtered = products.filter(p => p.isNew);
+        } else {
+            filtered = products.filter(p => p.category === currentFilter);
+        }
     }
+
+    const sortVal = document.getElementById('sort-select').value;
+    if (sortVal === 'price-asc') filtered.sort((a, b) => a.price - b.price);
+    if (sortVal === 'price-desc') filtered.sort((a, b) => b.price - a.price);
+    if (sortVal === 'new') filtered.sort((a, b) => (a.isNew === b.isNew) ? 0 : a.isNew ? -1 : 1);
+
+    renderProducts(filtered, mainProductGrid);
 }
 
-function renderNewCollection() {
-    const newItems = products.filter(p => p.isNew).slice(0, 4);
-    newCollectionGrid.innerHTML = newItems.map(createProductCardHTML).join('');
-}
-
-// --- CART LOGIC ---
-function addToCart(id, qty = 1, size = 'M', color = 'Standard') {
+// CART LOGIC
+function addToCart(id, qty = 1) {
     const product = products.find(p => p.id === id);
-    const existing = cart.find(item => item.id === id && item.size === size && item.color === color);
+    const existing = cart.find(item => item.id === id);
     if (existing) {
-        existing.qty += parseInt(qty);
+        existing.qty += qty;
     } else {
-        cart.push({ ...product, qty: parseInt(qty), size, color });
+        cart.push({ ...product, qty });
     }
     saveCart();
-    renderCart();
-    openSidebar(cartSidebar);
+    openCart();
 }
 
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    saveCart();
-    renderCart();
-}
-
-function changeQty(index, delta) {
-    cart[index].qty += delta;
-    if (cart[index].qty <= 0) cart.splice(index, 1);
-    saveCart();
-    renderCart();
+function updateCartQty(id, change) {
+    const item = cart.find(i => i.id === id);
+    if(item) {
+        item.qty += change;
+        if(item.qty <= 0) cart = cart.filter(i => i.id !== id);
+        saveCart();
+        renderCartItems();
+        if(document.getElementById('view-checkout').classList.contains('hidden') === false){
+            renderCheckoutSummary();
+        }
+    }
 }
 
 function saveCart() {
     localStorage.setItem('norva_cart', JSON.stringify(cart));
     updateBadges();
+    renderCartItems();
 }
 
-function renderCart() {
-    const container = document.getElementById('cart-items-container');
-    const totalEl = document.getElementById('cart-total-price');
-    
-    if (cart.length === 0) {
-        container.innerHTML = '<p style="text-align:center; margin-top:50px;">Votre panier est vide.</p>';
-        totalEl.textContent = '0 MAD';
-        return;
+// FAVORITES LOGIC
+function toggleFavorite(id, btnElement = null) {
+    if (favorites.includes(id)) {
+        favorites = favorites.filter(favId => favId !== id);
+        if(btnElement) {
+            btnElement.classList.remove('active');
+            btnElement.innerHTML = '<i class="fa-regular fa-heart"></i>';
+        }
+    } else {
+        favorites.push(id);
+        if(btnElement) {
+            btnElement.classList.add('active');
+            btnElement.innerHTML = '<i class="fa-solid fa-heart"></i>';
+        }
     }
+    localStorage.setItem('norva_favs', JSON.stringify(favorites));
+    updateBadges();
+    if(!document.getElementById('view-favorites').classList.contains('hidden')) {
+        renderFavoritesView();
+    }
+}
 
+function renderFavoritesView() {
+    const favProducts = products.filter(p => favorites.includes(p.id));
+    if(favProducts.length === 0) {
+        document.getElementById('empty-fav-msg').classList.remove('hidden');
+    } else {
+        document.getElementById('empty-fav-msg').classList.add('hidden');
+    }
+    renderProducts(favProducts, favoritesGrid);
+}
+
+// UI UPDATES
+function updateBadges() {
+    const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+    cartCount.textContent = totalItems;
+    favCount.textContent = favorites.length;
+}
+
+function renderCartItems() {
+    cartItemsContainer.innerHTML = '';
     let total = 0;
-    container.innerHTML = cart.map((item, index) => {
+    cart.forEach(item => {
         total += item.price * item.qty;
-        return `
-            <div class="cart-item">
-                <div class="cart-item-img"><img src="${item.img}" alt="${item.name}"></div>
+        cartItemsContainer.innerHTML += `
+            <div class="cart-item fade-in">
+                <img src="${item.img}" alt="${item.name}">
                 <div class="cart-item-info">
-                    <div class="cart-item-title">${item.name}</div>
-                    <div style="font-size:0.8rem; margin-bottom:5px;">Taille: ${item.size} | Coul: ${item.color}</div>
-                    <div class="cart-item-price">${item.price} MAD</div>
-                    <div class="cart-item-controls">
-                        <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                    <div>
+                        <div class="cart-item-title">${item.name}</div>
+                        <div style="font-weight:bold">${item.price} MAD</div>
+                    </div>
+                    <div class="cart-qty">
+                        <button onclick="updateCartQty(${item.id}, -1)">-</button>
                         <span>${item.qty}</span>
-                        <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
-                        <button class="cart-item-remove" onclick="removeFromCart(${index})">SUPPRIMER</button>
+                        <button onclick="updateCartQty(${item.id}, 1)">+</button>
                     </div>
                 </div>
+                <div class="cart-item-remove" onclick="updateCartQty(${item.id}, -${item.qty})">Supprimer</div>
             </div>
         `;
-    }).join('');
-    totalEl.textContent = `${total} MAD`;
+    });
+    cartTotalPrice.textContent = `${total} MAD`;
 }
 
-document.getElementById('btn-clear-cart').addEventListener('click', () => {
-    cart = [];
-    saveCart();
-    renderCart();
-});
-
-// --- FAVORITES LOGIC ---
-function toggleFavorite(id, event) {
-    if(event) event.stopPropagation();
-    const index = favorites.findIndex(fav => fav.id === id);
-    if (index > -1) {
-        favorites.splice(index, 1);
-    } else {
-        const product = products.find(p => p.id === id);
-        favorites.push(product);
-    }
-    saveFavorites();
-    renderMainShop();
-    renderNewCollection();
-    renderFavorites();
+function openCart() {
+    cartSidebar.classList.add('open');
+    sidebarOverlay.classList.remove('hidden');
+    renderCartItems();
 }
 
-function saveFavorites() {
-    localStorage.setItem('norva_favorites', JSON.stringify(favorites));
-    updateBadges();
+function closeCart() {
+    cartSidebar.classList.remove('open');
+    sidebarOverlay.classList.add('hidden');
 }
 
-function renderFavorites() {
-    const container = document.getElementById('fav-items-container');
-    if (favorites.length === 0) {
-        container.innerHTML = '<p style="text-align:center; margin-top:50px;">Aucun favori.</p>';
-        return;
-    }
-    container.innerHTML = favorites.map(item => `
-        <div class="fav-item">
-            <div class="fav-item-img"><img src="${item.img}" alt="${item.name}"></div>
-            <div class="fav-item-info">
-                <div class="fav-item-title">${item.name}</div>
-                <div class="cart-item-price">${item.price} MAD</div>
-                <div class="cart-item-controls">
-                    <button class="btn-primary" style="padding: 5px 10px; font-size:0.8rem;" onclick="addToCart(${item.id})">AJOUTER</button>
-                    <button class="fav-item-remove" onclick="toggleFavorite(${item.id})">SUPPRIMER</button>
-                </div>
-            </div>
-        </div>
-    `).join('');
-}
-
-// --- BADGES ---
-function updateBadges() {
-    cartBadge.textContent = cart.reduce((acc, item) => acc + item.qty, 0);
-    favBadge.textContent = favorites.length;
-}
-
-// --- PRODUCT MODAL ---
+// PRODUCT MODAL
 function openProductModal(id) {
-    const product = products.find(p => p.id === id);
-    const content = document.getElementById('product-detail-content');
-    
-    content.innerHTML = `
-        <div class="product-detail-img">
-            <img src="${product.img}" alt="${product.name}">
-        </div>
-        <div class="product-detail-info">
-            <div class="product-category">${product.category}</div>
-            <h2 class="pd-title">${product.name}</h2>
-            <div class="pd-price">${product.price} MAD</div>
-            <p class="pd-desc">Découvrez notre ${product.name.toLowerCase()}, une pièce incontournable de la collection NORVA. Conçu pour allier confort absolu et style urbain minimaliste. Parfait pour exprimer votre identité au quotidien.</p>
-            
-            <div class="pd-options">
-                <label>Taille</label>
-                <select id="pd-size">
-                    <option value="S">S</option>
-                    <option value="M" selected>M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                </select>
-                
-                <label>Couleur</label>
-                <select id="pd-color">
-                    <option value="Standard">Standard</option>
-                    <option value="Noir">Noir Profond</option>
-                    <option value="Beige">Beige Signature</option>
-                </select>
-
-                <label>Quantité</label>
-                <input type="number" id="pd-qty" value="1" min="1" max="10">
+    const p = products.find(prod => prod.id === id);
+    const isFav = favorites.includes(p.id);
+    modalBody.innerHTML = `
+        <div class="product-detail-view fade-in">
+            <div class="product-detail-img">
+                <img src="${p.img}" alt="${p.name}">
             </div>
-
-            <div class="pd-actions">
-                <button class="btn-secondary" onclick="addFromModal(${product.id})">AJOUTER AU PANIER</button>
-                <button class="btn-primary" onclick="buyNow(${product.id})">ACHETER MAINTENANT</button>
+            <div class="product-detail-info">
+                <p class="product-cat">${p.category}</p>
+                <h2>${p.name}</h2>
+                <div class="price">${p.price} MAD</div>
+                <p>${p.desc}</p>
+                <div style="margin-bottom:1rem; font-weight:bold;">Taille :</div>
+                <div class="size-selector">
+                    <div class="size-btn">S</div>
+                    <div class="size-btn selected">M</div>
+                    <div class="size-btn">L</div>
+                    <div class="size-btn">XL</div>
+                </div>
+                <div style="display:flex; gap:1rem; margin-top:2rem;">
+                    <button class="btn btn-primary" style="flex-grow:1" onclick="addToCart(${p.id}); document.getElementById('product-modal').classList.add('hidden')">AJOUTER AU PANIER</button>
+                    <button class="fav-btn-card ${isFav ? 'active' : ''}" style="position:static; width:45px; height:45px;" onclick="toggleFavorite(${p.id}, this)">
+                        <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                    </button>
+                </div>
             </div>
         </div>
     `;
-
-    // Related products (random 3 from same category or fallback)
-    const related = products.filter(p => p.category === product.category && p.id !== product.id).slice(0,3);
-    if(related.length < 3) related.push(...products.filter(p => p.id !== product.id).slice(0, 3 - related.length));
+    productModal.classList.remove('hidden');
     
-    document.getElementById('related-products-grid').innerHTML = related.map(createProductCardHTML).join('');
-
-    openModal(productModal);
-}
-
-window.addFromModal = function(id) {
-    const qty = document.getElementById('pd-qty').value;
-    const size = document.getElementById('pd-size').value;
-    const color = document.getElementById('pd-color').value;
-    addToCart(id, qty, size, color);
-    closeAllModals();
-}
-
-window.buyNow = function(id) {
-    addFromModal(id);
-    closeAllModals();
-    openModal(checkoutModal);
-    renderCheckout();
-}
-
-// --- UI INTERACTIONS ---
-
-// Modals / Sidebars functions
-function openSidebar(element) {
-    overlayBg.classList.add('active');
-    element.classList.add('active');
-}
-function closeSidebar(element) {
-    element.classList.remove('active');
-    if(!document.querySelector('.modal-overlay.active')) {
-        overlayBg.classList.remove('active');
-    }
-}
-function openModal(element) {
-    overlayBg.classList.add('active');
-    element.classList.add('active');
-}
-function closeAllModals() {
-    document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
-    document.querySelectorAll('.sidebar').forEach(s => s.classList.remove('active'));
-    overlayBg.classList.remove('active');
-}
-
-// Event Listeners for UI
-document.getElementById('cart-icon').addEventListener('click', () => openSidebar(cartSidebar));
-document.getElementById('close-cart').addEventListener('click', () => closeSidebar(cartSidebar));
-document.getElementById('btn-continue-shopping').addEventListener('click', () => closeSidebar(cartSidebar));
-
-document.getElementById('fav-icon').addEventListener('click', () => openSidebar(favSidebar));
-document.getElementById('close-fav').addEventListener('click', () => closeSidebar(favSidebar));
-
-overlayBg.addEventListener('click', closeAllModals);
-document.querySelectorAll('.close-modal').forEach(btn => {
-    btn.addEventListener('click', closeAllModals);
-});
-
-// Mobile Menu
-const menuIcon = document.getElementById('menu-icon');
-const navLinks = document.querySelector('.nav-links');
-menuIcon.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-
-// Search
-const searchIcon = document.getElementById('search-icon');
-const searchContainer = document.getElementById('search-bar-container');
-const searchInput = document.getElementById('search-input');
-const closeSearch = document.getElementById('close-search');
-
-searchIcon.addEventListener('click', () => {
-    searchContainer.classList.toggle('hidden');
-    if(!searchContainer.classList.contains('hidden')) searchInput.focus();
-});
-closeSearch.addEventListener('click', () => searchContainer.classList.add('hidden'));
-
-searchInput.addEventListener('input', (e) => {
-    searchQuery = e.target.value;
-    renderMainShop();
-    document.getElementById('boutique').scrollIntoView({behavior: 'smooth'});
-});
-
-// Filters & Sorting
-const filterBtns = document.querySelectorAll('.filter-btn');
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        currentFilter = e.target.dataset.filter;
-        renderMainShop();
-    });
-});
-
-document.getElementById('sort-select').addEventListener('change', (e) => {
-    currentSort = e.target.value;
-    renderMainShop();
-});
-
-// Category Cards
-document.querySelectorAll('.category-card').forEach(card => {
-    card.addEventListener('click', () => {
-        const cat = card.dataset.category;
-        currentFilter = cat;
-        filterBtns.forEach(b => {
-            b.classList.remove('active');
-            if(b.dataset.filter === cat) b.classList.add('active');
+    // Select taille logic statique pour démo
+    document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+            e.target.classList.add('selected');
         });
-        document.getElementById('boutique').scrollIntoView({behavior: 'smooth'});
-        renderMainShop();
     });
-});
+}
 
-// Nav Links filtering
-document.querySelectorAll('.nav-filter').forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        navLinks.classList.remove('active'); // close mobile menu
-        
-        if (link.dataset.category) {
-            currentFilter = link.dataset.category;
-            filterBtns.forEach(b => {
-                b.classList.remove('active');
-                if(b.dataset.filter === currentFilter) b.classList.add('active');
-            });
-        }
-        if (link.dataset.sort) {
-            currentSort = link.dataset.sort;
-            document.getElementById('sort-select').value = currentSort;
-        }
-        
-        document.getElementById('boutique').scrollIntoView({behavior: 'smooth'});
-        renderMainShop();
-    });
-});
-
-// Smooth Scroll for Hero Button
-document.getElementById('btn-discover').addEventListener('click', () => {
-    document.getElementById('boutique').scrollIntoView({behavior: 'smooth'});
-});
-
-// --- CHECKOUT LOGIC ---
-document.getElementById('btn-checkout').addEventListener('click', () => {
-    if (cart.length === 0) {
-        alert("Votre panier est vide.");
-        return;
-    }
-    closeSidebar(cartSidebar);
-    openModal(checkoutModal);
-    renderCheckout();
-});
-
-function renderCheckout() {
-    const itemsContainer = document.getElementById('checkout-items');
-    let total = 0;
-    itemsContainer.innerHTML = cart.map(item => {
-        const itemTotal = item.price * item.qty;
-        total += itemTotal;
-        return `
-            <div class="checkout-item">
-                <span>${item.qty}x ${item.name} (${item.size})</span>
-                <span>${itemTotal} MAD</span>
+// CHECKOUT SUMMARY
+function renderCheckoutSummary() {
+    const container = document.getElementById('checkout-items');
+    container.innerHTML = '';
+    let subtotal = 0;
+    cart.forEach(item => {
+        subtotal += item.price * item.qty;
+        container.innerHTML += `
+            <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-size:0.9rem;">
+                <span>${item.qty}x ${item.name}</span>
+                <strong>${item.price * item.qty} MAD</strong>
             </div>
         `;
-    }).join('');
+    });
     
-    // Add shipping cost if express
-    const shippingRadios = document.querySelectorAll('input[name="shipping"]');
-    let shippingCost = 0;
-    shippingRadios.forEach(radio => {
-        if(radio.checked && radio.value === 'express') shippingCost = 50;
-    });
-
-    document.getElementById('checkout-total-price').textContent = `${total + shippingCost} MAD`;
-
-    shippingRadios.forEach(radio => {
-        radio.addEventListener('change', renderCheckout);
-    });
+    const shippingSelect = document.querySelector('input[name="shipping"]:checked').value;
+    const shippingCost = shippingSelect === 'express' ? 50 : 0;
+    
+    document.getElementById('checkout-subtotal').textContent = `${subtotal} MAD`;
+    document.getElementById('checkout-shipping').textContent = shippingCost === 0 ? 'Gratuit' : `${shippingCost} MAD`;
+    document.getElementById('checkout-total').textContent = `${subtotal + shippingCost} MAD`;
 }
 
-document.getElementById('checkout-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    closeAllModals();
-    
-    // Generate fake order number
-    const orderNum = 'NORVA-' + Math.floor(Math.random() * 1000000);
-    document.getElementById('order-number').textContent = orderNum;
-    
-    // Clear cart
-    cart = [];
-    saveCart();
-    renderCart();
-    
-    openModal(document.getElementById('success-modal'));
-});
+// EVENT LISTENERS SETUP
+function setupEventListeners() {
+    // Navigation
+    document.querySelectorAll('a[data-link], button[data-link]').forEach(el => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = el.getAttribute('data-link');
+            if (el.hasAttribute('data-filter')) {
+                currentFilter = el.getAttribute('data-filter');
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-filter') === currentFilter);
+                });
+            }
+            switchView(target);
+            if(document.querySelector('.nav-links').classList.contains('active')) {
+                document.querySelector('.nav-links').classList.remove('active');
+            }
+        });
+    });
 
-document.querySelector('.close-success').addEventListener('click', () => {
-    closeAllModals();
-    document.getElementById('boutique').scrollIntoView({behavior: 'smooth'});
-});
+    // Category Cards Home
+    document.querySelectorAll('.cat-card').forEach(card => {
+        card.addEventListener('click', () => {
+            currentFilter = card.getAttribute('data-filter');
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-filter') === currentFilter);
+            });
+            switchView('shop');
+        });
+    });
 
-// --- NEWSLETTER ---
-document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('newsletter-email').value;
-    if(email) {
+    // Shop Filters
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.getAttribute('data-filter');
+            renderShop();
+        });
+    });
+
+    document.getElementById('sort-select').addEventListener('change', renderShop);
+
+    // Cart Events
+    document.getElementById('cart-btn').addEventListener('click', openCart);
+    document.getElementById('close-cart').addEventListener('click', closeCart);
+    sidebarOverlay.addEventListener('click', closeCart);
+    
+    document.getElementById('clear-cart').addEventListener('click', () => {
+        cart = []; saveCart();
+    });
+
+    document.getElementById('go-to-checkout').addEventListener('click', () => {
+        if(cart.length === 0) return alert("Votre panier est vide !");
+        closeCart();
+        switchView('checkout');
+    });
+
+    // Favoris Event
+    document.getElementById('fav-btn').addEventListener('click', () => switchView('favorites'));
+
+    // Mobile Menu
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Modal Events
+    document.getElementById('close-modal').addEventListener('click', () => productModal.classList.add('hidden'));
+    productModal.addEventListener('click', (e) => { if(e.target === productModal) productModal.classList.add('hidden'); });
+
+    // Search Events
+    const searchOverlay = document.getElementById('search-overlay');
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    document.getElementById('search-btn').addEventListener('click', () => {
+        searchOverlay.classList.remove('hidden');
+        searchInput.focus();
+    });
+    document.getElementById('close-search').addEventListener('click', () => searchOverlay.classList.add('hidden'));
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        if(query.length < 2) { searchResults.innerHTML = ''; return; }
+        const results = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+        renderProducts(results, searchResults);
+    });
+
+    // Checkout Form
+    document.querySelectorAll('input[name="shipping"]').forEach(radio => {
+        radio.addEventListener('change', renderCheckoutSummary);
+    });
+
+    document.getElementById('checkout-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const orderNum = 'NV-' + Math.floor(Math.random() * 1000000);
+        document.getElementById('order-number').textContent = orderNum;
+        cart = []; saveCart();
+        switchView('success');
+    });
+
+    // Newsletter
+    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        document.getElementById('newsletter-form').classList.add('hidden');
         document.getElementById('newsletter-msg').classList.remove('hidden');
-        document.getElementById('newsletter-email').value = '';
-        setTimeout(() => {
-            document.getElementById('newsletter-msg').classList.add('hidden');
-        }, 3000);
-    }
-});
+    });
+}
