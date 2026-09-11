@@ -3,285 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NORVA | Votre style. Votre identité</title>
+    <title>NORVA | Your Style. Your Identity</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- EN-TÊTE -->
-    <header id="header">
+    <!-- HEADER -->
+    <header class="navbar">
         <div class="logo">
-            <a href="#">NORVA</a>
-        </div>
-        <nav id="navbar">
-            <ul class="nav-liens">
-                <li><a href="#hero">Accueil</a></li>
-                <li><a href="#boutique">Boutique</a></li>
-                <li><a href="#" class="nav-filtre" data-categorie="Homme">Homme</a></li>
-                <li><a href="#" class="nav-filtre" data-categorie="Femme">Femme</a></li>
-                <li><a href="#" class="nav-tri" data-tri="nouveautes">Nouveautés</a></li>
-                <li><a href="#apropos">À propos</a></li>
-            </ul>
-        </nav>
-        <div class="header-icones">
-            <button id="btn-rechercher-ouvrir" title="Rechercher"><i class="fas fa-search"></i></button>
-            <button id="btn-favoris-ouvrir" title="Favoris"><i class="far fa-heart"></i><span class="badge" id="badge-favoris">0</span></button>
-            <button id="btn-panier-ouvrir" title="Panier"><i class="fas fa-shopping-cart"></i><span class="badge" id="badge-panier">0</span></button>
-            <button id="btn-menu-mobile" class="mobile-uniquement" title="Menu"><i class="fas fa-bars"></i></button>
+            <a href="#" data-link="home">NORVA</a>
         </div>
         
-        <!-- Barre de recherche -->
-        <div id="conteneur-barre-recherche" class="cache">
-            <input type="text" id="input-recherche" placeholder="Rechercher un produit, une catégorie...">
-            <button id="btn-rechercher-fermer"><i class="fas fa-times"></i></button>
+        <nav class="nav-links">
+            <a href="#" data-link="home">Accueil</a>
+            <a href="#" data-link="shop" data-filter="all">Boutique</a>
+            <a href="#" data-link="shop" data-filter="homme">Homme</a>
+            <a href="#" data-link="shop" data-filter="femme">Femme</a>
+            <a href="#" data-link="shop" data-filter="new">Nouveautés</a>
+            <a href="#about-section">À propos</a>
+        </nav>
+
+        <div class="nav-icons">
+            <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button id="fav-btn"><i class="fa-regular fa-heart"></i><span id="fav-count" class="badge">0</span></button>
+            <button id="cart-btn"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count" class="badge">0</span></button>
+            <button id="account-btn"><i class="fa-regular fa-user"></i></button>
+            <button id="mobile-menu-btn" class="mobile-only"><i class="fa-solid fa-bars"></i></button>
         </div>
     </header>
 
-    <main>
-        <!-- SECTION HERO -->
-        <section id="hero">
-            <div class="hero-content">
-                <h1>NORVA</h1>
-                <p>Votre style. Votre identité</p>
-                <button id="btn-decouvrir">DÉCOUVRIR NOS PRODUITS</button>
+    <!-- SEARCH OVERLAY -->
+    <div id="search-overlay" class="overlay hidden">
+        <button class="close-btn" id="close-search">&times;</button>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Rechercher un produit, une catégorie...">
+            <div id="search-results" class="product-grid"></div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+        
+        <!-- HOME VIEW -->
+        <section id="view-home" class="view active">
+            <div class="hero">
+                <div class="hero-content fade-in">
+                    <h1>NORVA</h1>
+                    <p>Your Style. Your Identity</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" data-link="shop">SHOP NOW</button>
+                        <button class="btn btn-secondary" href="#about-section">DISCOVER</button>
+                    </div>
+                </div>
             </div>
+
+            <section class="section">
+                <h2 class="section-title">NEW COLLECTION</h2>
+                <div class="product-grid" id="new-collection-grid"></div>
+            </section>
+
+            <section class="section categories-section">
+                <div class="cat-card" data-filter="homme">
+                    <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=500&q=80" alt="Homme">
+                    <button class="btn btn-white">HOMME</button>
+                </div>
+                <div class="cat-card" data-filter="femme">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80" alt="Femme">
+                    <button class="btn btn-white">FEMME</button>
+                </div>
+                <div class="cat-card" data-filter="t-shirts">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80" alt="T-Shirts">
+                    <button class="btn btn-white">T-SHIRTS</button>
+                </div>
+                <div class="cat-card" data-filter="hoodies">
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&q=80" alt="Hoodies">
+                    <button class="btn btn-white">HOODIES</button>
+                </div>
+            </section>
+
+            <section id="about-section" class="section about-section">
+                <h2>ABOUT NORVA</h2>
+                <p>NORVA est plus qu'une marque de vêtements. C'est une vision moderne du style urbain, conçue pour ceux qui n'ont pas peur d'exprimer leur véritable identité. Avec des lignes minimalistes, des coupes premium et une élégance intemporelle, NORVA redéfinit le streetwear contemporain.</p>
+            </section>
+
+            <section class="section newsletter-section">
+                <h2>JOIN THE NORVA COMMUNITY</h2>
+                <p>Get exclusive access to new collections, special drops and offers.</p>
+                <form id="newsletter-form" class="newsletter-form">
+                    <input type="email" placeholder="Entrez votre email" required>
+                    <button type="submit" class="btn btn-primary">SUBSCRIBE</button>
+                </form>
+                <p id="newsletter-msg" class="success-msg hidden">Bienvenue dans la communauté NORVA !</p>
+            </section>
         </section>
 
-        <!-- NOUVELLE COLLECTION -->
-        <section id="nouvelle-collection" class="section-padding">
-            <div class="section-titre">
-                <h2>NOUVELLE COLLECTION</h2>
-                <p>Découvrez nos pièces exclusives conçues pour un style moderne et urbain.</p>
-            </div>
-            <div class="grille-produits" id="grille-nouvelle-collection"></div>
-        </section>
-
-        <!-- CATÉGORIES -->
-        <section id="categories" class="section-padding bg-secondaire">
-            <div class="section-titre">
-                <h2>NOS CATÉGORIES</h2>
-            </div>
-            <div class="grille-categories">
-                <div class="carte-categorie" data-categorie="Homme">
-                    <h3>Homme</h3>
-                </div>
-                <div class="carte-categorie" data-categorie="Femme">
-                    <h3>Femme</h3>
-                </div>
-                <div class="carte-categorie" data-categorie="T-Shirts">
-                    <h3>T-Shirts</h3>
-                </div>
-                <div class="carte-categorie" data-categorie="Sweats à capuche">
-                    <h3>Sweats à capuche</h3>
-                </div>
-                <div class="carte-categorie" data-categorie="Pantalons">
-                    <h3>Pantalons</h3>
-                </div>
-                <div class="carte-categorie" data-categorie="Vestes">
-                    <h3>Vestes</h3>
-                </div>
-                <div class="carte-categorie" data-categorie="Accessoires">
-                    <h3>Accessoires</h3>
-                </div>
-            </div>
-        </section>
-
-        <!-- BOUTIQUE -->
-        <section id="boutique" class="section-padding">
-            <div class="section-titre">
+        <!-- SHOP VIEW -->
+        <section id="view-shop" class="view hidden section">
+            <div class="shop-header">
                 <h2>BOUTIQUE</h2>
+                <div class="shop-controls">
+                    <select id="sort-select">
+                        <option value="default">Trier par</option>
+                        <option value="price-asc">Prix: Croissant</option>
+                        <option value="price-desc">Prix: Décroissant</option>
+                        <option value="new">Nouveautés</option>
+                    </select>
+                </div>
             </div>
             
-            <div class="boutique-conteneur">
-                <!-- Filtres et Tri -->
-                <aside class="boutique-filtres">
-                    <div class="groupe-filtre">
-                        <h3>Catégories</h3>
-                        <ul id="liste-filtres-categories">
-                            <li><button class="btn-filtre actif" data-filtre="Tous">Tous</button></li>
-                            <li><button class="btn-filtre" data-filtre="Homme">Homme</button></li>
-                            <li><button class="btn-filtre" data-filtre="Femme">Femme</button></li>
-                            <li><button class="btn-filtre" data-filtre="T-Shirts">T-Shirts</button></li>
-                            <li><button class="btn-filtre" data-filtre="Sweats à capuche">Sweats à capuche</button></li>
-                            <li><button class="btn-filtre" data-filtre="Pantalons">Pantalons</button></li>
-                            <li><button class="btn-filtre" data-filtre="Vestes">Vestes</button></li>
-                            <li><button class="btn-filtre" data-filtre="Accessoires">Accessoires</button></li>
-                        </ul>
-                    </div>
-                    <div class="groupe-filtre">
-                        <h3>Trier par</h3>
-                        <select id="select-tri">
-                            <option value="defaut">Recommandé</option>
-                            <option value="prix-croissant">Prix croissant</option>
-                            <option value="prix-decroissant">Prix décroissant</option>
-                            <option value="nouveautes">Nouveautés</option>
-                        </select>
-                    </div>
+            <div class="shop-layout">
+                <aside class="shop-sidebar">
+                    <h3>Filtres</h3>
+                    <ul class="filter-list">
+                        <li><a href="#" class="filter-btn active" data-filter="all">Tous</a></li>
+                        <li><a href="#" class="filter-btn" data-filter="homme">Homme</a></li>
+                        <li><a href="#" class="filter-btn" data-filter="femme">Femme</a></li>
+                        <li><a href="#" class="filter-btn" data-filter="t-shirts">T-Shirts</a></li>
+                        <li><a href="#" class="filter-btn" data-filter="hoodies">Hoodies</a></li>
+                        <li><a href="#" class="filter-btn" data-filter="pantalons">Pantalons</a></li>
+                        <li><a href="#" class="filter-btn" data-filter="vestes">Vestes</a></li>
+                        <li><a href="#" class="filter-btn" data-filter="accessoires">Accessoires</a></li>
+                    </ul>
                 </aside>
-
-                <!-- Grille de Produits -->
-                <div class="boutique-produits">
-                    <div id="msg-aucun-produit" class="cache">Aucun produit trouvé.</div>
-                    <div class="grille-produits" id="grille-boutique-principale"></div>
+                <div class="shop-main">
+                    <div id="main-product-grid" class="product-grid"></div>
+                    <p id="no-products-msg" class="hidden">Aucun produit ne correspond à vos critères.</p>
                 </div>
             </div>
         </section>
 
-        <!-- À PROPOS -->
-        <section id="apropos" class="section-padding bg-secondaire">
-            <div class="apropos-contenu">
-                <h2>À PROPOS DE NORVA</h2>
-                <p>NORVA est plus qu'une simple marque de vêtements. C'est une représentation de votre style personnel et de votre identité. Née de la créativité et de la passion pour la mode moderne, notre collection allie minimalisme élégant et influences urbaines. Chaque pièce est conçue pour vous offrir confort, qualité et une allure professionnelle au quotidien.</p>
-            </div>
+        <!-- FAVORITES VIEW -->
+        <section id="view-favorites" class="view hidden section">
+            <h2>MES FAVORIS</h2>
+            <div id="favorites-grid" class="product-grid"></div>
+            <p id="empty-fav-msg" class="hidden">Vous n'avez aucun favori pour le moment.</p>
         </section>
 
-        <!-- NEWSLETTER -->
-        <section id="newsletter" class="section-padding">
-            <div class="newsletter-conteneur">
-                <h2>REJOIGNEZ LA COMMUNAUTÉ NORVA</h2>
-                <p>Recevez nos nouveautés, nos nouvelles collections et nos offres exclusives.</p>
-                <form id="formulaire-newsletter">
-                    <input type="email" id="input-email-newsletter" placeholder="Votre adresse email" required>
-                    <button type="submit" class="btn-principal">S'ABONNER</button>
-                </form>
-                <div id="msg-newsletter" class="cache">Merci pour votre inscription !</div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-conteneur">
-            <div class="footer-marque">
-                <h3>NORVA</h3>
-                <p>Votre style. Votre identité</p>
-                <div class="sociaux-icones">
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-            <div class="footer-liens">
-                <h4>Liens Utiles</h4>
-                <ul>
-                    <li><a href="#boutique">Boutique</a></li>
-                    <li><a href="#apropos">À propos</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-liens">
-                <h4>Informations</h4>
-                <ul>
-                    <li><a href="#">Livraison</a></li>
-                    <li><a href="#">Retours</a></li>
-                    <li><a href="#">Conditions générales</a></li>
-                    <li><a href="#">Politique de confidentialité</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bas">
-            <p>&copy; 2026 NORVA. Tous droits réservés.</p>
-        </div>
-    </footer>
-
-    <!-- MODALE DETAILS PRODUIT -->
-    <div id="modale-produit" class="modale-overlay">
-        <div class="modale-contenu modale-produit-contenu">
-            <button class="fermer-modale" title="Fermer"><i class="fas fa-times"></i></button>
-            <div class="produit-detail-grid" id="contenu-detail-produit"></div>
-            <div class="produits-similaires">
-                <h3>VOUS AIMEREZ AUSSI</h3>
-                <div class="grille-produits" id="grille-produits-similaires"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PANIER LATÉRAL -->
-    <div id="panier-lateral" class="lateral-sidebar">
-        <div class="sidebar-en-tete">
-            <h2>PANIER</h2>
-            <button class="fermer-sidebar" id="fermer-panier" title="Fermer"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="sidebar-articles" id="conteneur-articles-panier"></div>
-        <div class="sidebar-pied">
-            <div class="panier-total-ligne">
-                <span>Total :</span>
-                <span id="panier-prix-total">0 MAD</span>
-            </div>
-            <button id="btn-vider-panier" class="btn-secondaire">VIDER LE PANIER</button>
-            <button id="btn-commander" class="btn-principal">VALIDER LA COMMANDE</button>
-            <button id="btn-continuer-achats" class="btn-secondaire">CONTINUER MES ACHATS</button>
-        </div>
-    </div>
-
-    <!-- FAVORIS LATÉRAL -->
-    <div id="favoris-lateral" class="lateral-sidebar">
-        <div class="sidebar-en-tete">
-            <h2>FAVORIS</h2>
-            <button class="fermer-sidebar" id="fermer-favoris" title="Fermer"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="sidebar-articles" id="conteneur-articles-favoris"></div>
-    </div>
-
-    <!-- MODALE COMMANDE -->
-    <div id="modale-commande" class="modale-overlay">
-        <div class="modale-contenu modale-commande-contenu">
-            <button class="fermer-modale" title="Fermer"><i class="fas fa-times"></i></button>
-            <h2>COMMANDE</h2>
-            <div class="commande-conteneur-grille">
-                <div class="resume-commande">
-                    <h3>VOTRE COMMANDE</h3>
-                    <div id="resume-articles-commande"></div>
-                    <div class="commande-total-final">
-                        <strong>Total: <span id="commande-prix-total">0 MAD</span></strong>
-                    </div>
-                </div>
-                <form id="formulaire-commande">
+        <!-- CHECKOUT VIEW -->
+        <section id="view-checkout" class="view hidden section checkout-section">
+            <h2>PAIEMENT SÉCURISÉ</h2>
+            <div class="checkout-container">
+                <form id="checkout-form" class="checkout-form">
                     <h3>Informations de livraison</h3>
-                    <div class="formulaire-ligne">
+                    <div class="form-row">
                         <input type="text" placeholder="Prénom" required>
                         <input type="text" placeholder="Nom" required>
                     </div>
-                    <div class="formulaire-ligne">
+                    <div class="form-row">
                         <input type="email" placeholder="Email" required>
                         <input type="tel" placeholder="Téléphone" required>
                     </div>
-                    <input type="text" placeholder="Adresse" required class="formulaire-input-plein">
-                    <div class="formulaire-ligne">
+                    <input type="text" placeholder="Adresse complète" required>
+                    <div class="form-row">
                         <input type="text" placeholder="Ville" required>
                         <input type="text" placeholder="Pays" required>
                     </div>
                     
-                    <h3>Options de livraison</h3>
-                    <div class="options-livraison">
-                        <label><input type="radio" name="livraison" value="standard" checked> Livraison standard</label>
-                        <label><input type="radio" name="livraison" value="express"> Livraison express (+50 MAD)</label>
+                    <h3>Méthode de livraison</h3>
+                    <div class="radio-group">
+                        <label><input type="radio" name="shipping" value="standard" checked> Livraison standard (Gratuit)</label>
+                        <label><input type="radio" name="shipping" value="express"> Livraison express (50 MAD)</label>
                     </div>
 
-                    <h3>Paiement (Démonstration)</h3>
-                    <p class="notice-demo">Ceci est une simulation. Aucun paiement réel ne sera traité.</p>
-                    
-                    <button type="submit" class="btn-principal plein-largeur">VALIDER LA COMMANDE</button>
+                    <button type="submit" class="btn btn-primary btn-block">PLACE ORDER</button>
                 </form>
+                
+                <div class="checkout-summary">
+                    <h3>YOUR ORDER</h3>
+                    <div id="checkout-items"></div>
+                    <div class="cart-totals">
+                        <div class="total-row"><span>Sous-total</span><span id="checkout-subtotal">0 MAD</span></div>
+                        <div class="total-row"><span>Livraison</span><span id="checkout-shipping">0 MAD</span></div>
+                        <div class="total-row grand-total"><span>Total</span><span id="checkout-total">0 MAD</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUCCESS VIEW -->
+        <section id="view-success" class="view hidden section text-center">
+            <i class="fa-regular fa-circle-check" style="font-size: 5rem; margin-bottom: 1rem;"></i>
+            <h2>COMMANDE CONFIRMÉE</h2>
+            <p>Merci pour votre achat ! Votre numéro de commande est le <strong id="order-number"></strong>.</p>
+            <button class="btn btn-primary" style="margin-top: 2rem;" data-link="home">Retour à l'accueil</button>
+        </section>
+
+    </main>
+
+    <!-- CART SIDEBAR -->
+    <div id="cart-sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>MON PANIER</h2>
+            <button id="close-cart" class="close-btn">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="total-row grand-total"><span>Total</span><span id="cart-total-price">0 MAD</span></div>
+            <button id="go-to-checkout" class="btn btn-primary btn-block">VALIDER LA COMMANDE</button>
+            <button id="clear-cart" class="btn btn-secondary btn-block">VIDER LE PANIER</button>
+        </div>
+    </div>
+    <div id="sidebar-overlay" class="overlay hidden"></div>
+
+    <!-- PRODUCT MODAL -->
+    <div id="product-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="close-btn" id="close-modal">&times;</button>
+            <div class="modal-body" id="modal-body-content">
+                <!-- Injecté via JS -->
             </div>
         </div>
     </div>
 
-    <!-- MODALE SUCCÈS -->
-    <div id="modale-succes" class="modale-overlay">
-        <div class="modale-contenu modale-succes-contenu text-center">
-            <i class="fas fa-check-circle succes-icone"></i>
-            <h2>Commande validée avec succès !</h2>
-            <p>Votre numéro de commande est le : <strong id="numero-commande-texte"></strong></p>
-            <button class="btn-principal fermer-succes" style="margin-top: 20px;">CONTINUER MES ACHATS</button>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>NORVA</h2>
+                <p>Your Style. Your Identity</p>
+                <div class="socials">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Boutique</h3>
+                <a href="#" data-link="shop" data-filter="homme">Homme</a>
+                <a href="#" data-link="shop" data-filter="femme">Femme</a>
+                <a href="#" data-link="shop" data-filter="new">Nouveautés</a>
+            </div>
+            <div class="footer-links">
+                <h3>Informations</h3>
+                <a href="#">À propos</a>
+                <a href="#">Contact</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-links">
+                <h3>Légal</h3>
+                <a href="#">Livraison & Retours</a>
+                <a href="#">Conditions générales</a>
+                <a href="#">Politique de confidentialité</a>
+            </div>
         </div>
-    </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NORVA. Tous droits réservés.</p>
+        </div>
+    </footer>
 
-    <div class="arriere-plan-overlay" id="arriere-plan-overlay"></div>
-
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>
