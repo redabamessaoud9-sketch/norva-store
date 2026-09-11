@@ -10,75 +10,79 @@
 </head>
 <body>
 
-    <!-- HEADER -->
+    <!-- EN-TÊTE -->
     <header id="header">
         <div class="logo">
             <a href="#">NORVA</a>
         </div>
         <nav id="navbar">
-            <ul class="nav-links">
+            <ul class="nav-liens">
                 <li><a href="#hero">Accueil</a></li>
                 <li><a href="#boutique">Boutique</a></li>
-                <li><a href="#" class="nav-filter" data-category="Homme">Homme</a></li>
-                <li><a href="#" class="nav-filter" data-category="Femme">Femme</a></li>
-                <li><a href="#" class="nav-filter" data-sort="new">Nouveautés</a></li>
+                <li><a href="#" class="nav-filtre" data-categorie="Homme">Homme</a></li>
+                <li><a href="#" class="nav-filtre" data-categorie="Femme">Femme</a></li>
+                <li><a href="#" class="nav-tri" data-tri="nouveautes">Nouveautés</a></li>
                 <li><a href="#apropos">À propos</a></li>
             </ul>
         </nav>
-        <div class="header-icons">
-            <button id="search-icon"><i class="fas fa-search"></i></button>
-            <button id="fav-icon"><i class="far fa-heart"></i><span class="badge" id="fav-badge">0</span></button>
-            <button id="cart-icon"><i class="fas fa-shopping-cart"></i><span class="badge" id="cart-badge">0</span></button>
-            <button id="menu-icon" class="mobile-only"><i class="fas fa-bars"></i></button>
+        <div class="header-icones">
+            <button id="btn-rechercher-ouvrir" title="Rechercher"><i class="fas fa-search"></i></button>
+            <button id="btn-favoris-ouvrir" title="Favoris"><i class="far fa-heart"></i><span class="badge" id="badge-favoris">0</span></button>
+            <button id="btn-panier-ouvrir" title="Panier"><i class="fas fa-shopping-cart"></i><span class="badge" id="badge-panier">0</span></button>
+            <button id="btn-menu-mobile" class="mobile-uniquement" title="Menu"><i class="fas fa-bars"></i></button>
         </div>
         
-        <!-- Search Bar Dropdown -->
-        <div id="search-bar-container" class="hidden">
-            <input type="text" id="search-input" placeholder="Rechercher un produit, une catégorie...">
-            <button id="close-search"><i class="fas fa-times"></i></button>
+        <!-- Barre de recherche -->
+        <div id="conteneur-barre-recherche" class="cache">
+            <input type="text" id="input-recherche" placeholder="Rechercher un produit, une catégorie...">
+            <button id="btn-rechercher-fermer"><i class="fas fa-times"></i></button>
         </div>
     </header>
 
     <main>
-        <!-- HERO SECTION -->
+        <!-- SECTION HERO -->
         <section id="hero">
             <div class="hero-content">
                 <h1>NORVA</h1>
                 <p>Votre style. Votre identité</p>
-                <button id="btn-discover">DÉCOUVRIR NOS PRODUITS</button>
+                <button id="btn-decouvrir">DÉCOUVRIR NOS PRODUITS</button>
             </div>
         </section>
 
         <!-- NOUVELLE COLLECTION -->
         <section id="nouvelle-collection" class="section-padding">
-            <div class="section-title">
+            <div class="section-titre">
                 <h2>NOUVELLE COLLECTION</h2>
                 <p>Découvrez nos pièces exclusives conçues pour un style moderne et urbain.</p>
             </div>
-            <div class="product-grid" id="new-collection-grid">
-                <!-- Rempli par JavaScript -->
-            </div>
+            <div class="grille-produits" id="grille-nouvelle-collection"></div>
         </section>
 
         <!-- CATÉGORIES -->
-        <section id="categories-section" class="section-padding bg-secondary">
-            <div class="category-grid">
-                <div class="category-card" data-category="Homme">
+        <section id="categories" class="section-padding bg-secondaire">
+            <div class="section-titre">
+                <h2>NOS CATÉGORIES</h2>
+            </div>
+            <div class="grille-categories">
+                <div class="carte-categorie" data-categorie="Homme">
                     <h3>Homme</h3>
                 </div>
-                <div class="category-card" data-category="Femme">
+                <div class="carte-categorie" data-categorie="Femme">
                     <h3>Femme</h3>
                 </div>
-                <div class="category-card" data-category="T-Shirts">
+                <div class="carte-categorie" data-categorie="T-Shirts">
                     <h3>T-Shirts</h3>
                 </div>
-                <div class="category-card" data-category="Sweats à capuche">
+                <div class="carte-categorie" data-categorie="Sweats à capuche">
                     <h3>Sweats à capuche</h3>
                 </div>
-                <div class="category-card" data-category="Pantalons">
+                <div class="carte-categorie" data-categorie="Pantalons">
                     <h3>Pantalons</h3>
                 </div>
-                <div class="category-card" data-category="Accessoires">
+                <div class="carte-categorie" data-categorie="Vestes">
+                    <h3>Vestes</h3>
+                </div>
+                <div class="carte-categorie" data-categorie="Accessoires">
                     <h3>Accessoires</h3>
                 </div>
             </div>
@@ -86,50 +90,48 @@
 
         <!-- BOUTIQUE -->
         <section id="boutique" class="section-padding">
-            <div class="section-title">
+            <div class="section-titre">
                 <h2>BOUTIQUE</h2>
             </div>
             
-            <div class="shop-container">
+            <div class="boutique-conteneur">
                 <!-- Filtres et Tri -->
-                <aside class="shop-filters">
-                    <div class="filter-group">
+                <aside class="boutique-filtres">
+                    <div class="groupe-filtre">
                         <h3>Catégories</h3>
-                        <ul id="category-filters">
-                            <li><button class="filter-btn active" data-filter="Tous">Tous</button></li>
-                            <li><button class="filter-btn" data-filter="Homme">Homme</button></li>
-                            <li><button class="filter-btn" data-filter="Femme">Femme</button></li>
-                            <li><button class="filter-btn" data-filter="T-Shirts">T-Shirts</button></li>
-                            <li><button class="filter-btn" data-filter="Sweats à capuche">Sweats à capuche</button></li>
-                            <li><button class="filter-btn" data-filter="Pantalons">Pantalons</button></li>
-                            <li><button class="filter-btn" data-filter="Vestes">Vestes</button></li>
-                            <li><button class="filter-btn" data-filter="Accessoires">Accessoires</button></li>
+                        <ul id="liste-filtres-categories">
+                            <li><button class="btn-filtre actif" data-filtre="Tous">Tous</button></li>
+                            <li><button class="btn-filtre" data-filtre="Homme">Homme</button></li>
+                            <li><button class="btn-filtre" data-filtre="Femme">Femme</button></li>
+                            <li><button class="btn-filtre" data-filtre="T-Shirts">T-Shirts</button></li>
+                            <li><button class="btn-filtre" data-filtre="Sweats à capuche">Sweats à capuche</button></li>
+                            <li><button class="btn-filtre" data-filtre="Pantalons">Pantalons</button></li>
+                            <li><button class="btn-filtre" data-filtre="Vestes">Vestes</button></li>
+                            <li><button class="btn-filtre" data-filtre="Accessoires">Accessoires</button></li>
                         </ul>
                     </div>
-                    <div class="filter-group">
+                    <div class="groupe-filtre">
                         <h3>Trier par</h3>
-                        <select id="sort-select">
-                            <option value="default">Recommandé</option>
-                            <option value="price-asc">Prix croissant</option>
-                            <option value="price-desc">Prix décroissant</option>
-                            <option value="new">Nouveautés</option>
+                        <select id="select-tri">
+                            <option value="defaut">Recommandé</option>
+                            <option value="prix-croissant">Prix croissant</option>
+                            <option value="prix-decroissant">Prix décroissant</option>
+                            <option value="nouveautes">Nouveautés</option>
                         </select>
                     </div>
                 </aside>
 
-                <!-- Grille Produits -->
-                <div class="shop-products">
-                    <div id="no-products-msg" class="hidden">Aucun produit trouvé.</div>
-                    <div class="product-grid" id="main-shop-grid">
-                        <!-- Rempli par JavaScript -->
-                    </div>
+                <!-- Grille de Produits -->
+                <div class="boutique-produits">
+                    <div id="msg-aucun-produit" class="cache">Aucun produit trouvé.</div>
+                    <div class="grille-produits" id="grille-boutique-principale"></div>
                 </div>
             </div>
         </section>
 
         <!-- À PROPOS -->
-        <section id="apropos" class="section-padding bg-secondary">
-            <div class="about-content">
+        <section id="apropos" class="section-padding bg-secondaire">
+            <div class="apropos-contenu">
                 <h2>À PROPOS DE NORVA</h2>
                 <p>NORVA est plus qu'une simple marque de vêtements. C'est une représentation de votre style personnel et de votre identité. Née de la créativité et de la passion pour la mode moderne, notre collection allie minimalisme élégant et influences urbaines. Chaque pièce est conçue pour vous offrir confort, qualité et une allure professionnelle au quotidien.</p>
             </div>
@@ -137,31 +139,31 @@
 
         <!-- NEWSLETTER -->
         <section id="newsletter" class="section-padding">
-            <div class="newsletter-container">
+            <div class="newsletter-conteneur">
                 <h2>REJOIGNEZ LA COMMUNAUTÉ NORVA</h2>
                 <p>Recevez nos nouveautés, nos nouvelles collections et nos offres exclusives.</p>
-                <form id="newsletter-form">
-                    <input type="email" id="newsletter-email" placeholder="Votre adresse email" required>
-                    <button type="submit" class="btn-primary">S'ABONNER</button>
+                <form id="formulaire-newsletter">
+                    <input type="email" id="input-email-newsletter" placeholder="Votre adresse email" required>
+                    <button type="submit" class="btn-principal">S'ABONNER</button>
                 </form>
-                <div id="newsletter-msg" class="hidden">Merci pour votre inscription !</div>
+                <div id="msg-newsletter" class="cache">Merci pour votre inscription !</div>
             </div>
         </section>
     </main>
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-brand">
+        <div class="footer-conteneur">
+            <div class="footer-marque">
                 <h3>NORVA</h3>
                 <p>Votre style. Votre identité</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                <div class="sociaux-icones">
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
-            <div class="footer-links">
+            <div class="footer-liens">
                 <h4>Liens Utiles</h4>
                 <ul>
                     <li><a href="#boutique">Boutique</a></li>
@@ -170,7 +172,7 @@
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </div>
-            <div class="footer-links">
+            <div class="footer-liens">
                 <h4>Informations</h4>
                 <ul>
                     <li><a href="#">Livraison</a></li>
@@ -180,116 +182,106 @@
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
+        <div class="footer-bas">
             <p>&copy; 2026 NORVA. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- MODALS & OVERLAYS -->
-
-    <!-- Product Detail Modal -->
-    <div id="product-modal" class="modal-overlay">
-        <div class="modal-content product-detail-modal">
-            <button class="close-modal"><i class="fas fa-times"></i></button>
-            <div class="product-detail-container" id="product-detail-content">
-                <!-- Rempli par JavaScript -->
-            </div>
-            <div class="related-products">
+    <!-- MODALE DETAILS PRODUIT -->
+    <div id="modale-produit" class="modale-overlay">
+        <div class="modale-contenu modale-produit-contenu">
+            <button class="fermer-modale" title="Fermer"><i class="fas fa-times"></i></button>
+            <div class="produit-detail-grid" id="contenu-detail-produit"></div>
+            <div class="produits-similaires">
                 <h3>VOUS AIMEREZ AUSSI</h3>
-                <div class="product-grid" id="related-products-grid">
-                    <!-- Rempli par JavaScript -->
-                </div>
+                <div class="grille-produits" id="grille-produits-similaires"></div>
             </div>
         </div>
     </div>
 
-    <!-- Cart Sidebar -->
-    <div id="cart-sidebar" class="sidebar">
-        <div class="sidebar-header">
+    <!-- PANIER LATÉRAL -->
+    <div id="panier-lateral" class="lateral-sidebar">
+        <div class="sidebar-en-tete">
             <h2>PANIER</h2>
-            <button class="close-sidebar" id="close-cart"><i class="fas fa-times"></i></button>
+            <button class="fermer-sidebar" id="fermer-panier" title="Fermer"><i class="fas fa-times"></i></button>
         </div>
-        <div class="cart-items" id="cart-items-container">
-            <!-- Rempli par JS -->
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
+        <div class="sidebar-articles" id="conteneur-articles-panier"></div>
+        <div class="sidebar-pied">
+            <div class="panier-total-ligne">
                 <span>Total :</span>
-                <span id="cart-total-price">0 MAD</span>
+                <span id="panier-prix-total">0 MAD</span>
             </div>
-            <button id="btn-clear-cart" class="btn-secondary">VIDER LE PANIER</button>
-            <button id="btn-checkout" class="btn-primary">VALIDER LA COMMANDE</button>
-            <button id="btn-continue-shopping" class="btn-secondary">CONTINUER MES ACHATS</button>
+            <button id="btn-vider-panier" class="btn-secondaire">VIDER LE PANIER</button>
+            <button id="btn-commander" class="btn-principal">VALIDER LA COMMANDE</button>
+            <button id="btn-continuer-achats" class="btn-secondaire">CONTINUER MES ACHATS</button>
         </div>
     </div>
 
-    <!-- Favorites Sidebar -->
-    <div id="fav-sidebar" class="sidebar">
-        <div class="sidebar-header">
+    <!-- FAVORIS LATÉRAL -->
+    <div id="favoris-lateral" class="lateral-sidebar">
+        <div class="sidebar-en-tete">
             <h2>FAVORIS</h2>
-            <button class="close-sidebar" id="close-fav"><i class="fas fa-times"></i></button>
+            <button class="fermer-sidebar" id="fermer-favoris" title="Fermer"><i class="fas fa-times"></i></button>
         </div>
-        <div class="fav-items" id="fav-items-container">
-            <!-- Rempli par JS -->
-        </div>
+        <div class="sidebar-articles" id="conteneur-articles-favoris"></div>
     </div>
 
-    <!-- Checkout Modal -->
-    <div id="checkout-modal" class="modal-overlay">
-        <div class="modal-content checkout-modal">
-            <button class="close-modal"><i class="fas fa-times"></i></button>
+    <!-- MODALE COMMANDE -->
+    <div id="modale-commande" class="modale-overlay">
+        <div class="modale-contenu modale-commande-contenu">
+            <button class="fermer-modale" title="Fermer"><i class="fas fa-times"></i></button>
             <h2>COMMANDE</h2>
-            <div class="checkout-container">
-                <div class="order-summary">
+            <div class="commande-conteneur-grille">
+                <div class="resume-commande">
                     <h3>VOTRE COMMANDE</h3>
-                    <div id="checkout-items"></div>
-                    <div class="checkout-total">
-                        <strong>Total: <span id="checkout-total-price">0 MAD</span></strong>
+                    <div id="resume-articles-commande"></div>
+                    <div class="commande-total-final">
+                        <strong>Total: <span id="commande-prix-total">0 MAD</span></strong>
                     </div>
                 </div>
-                <form id="checkout-form">
+                <form id="formulaire-commande">
                     <h3>Informations de livraison</h3>
-                    <div class="form-row">
+                    <div class="formulaire-ligne">
                         <input type="text" placeholder="Prénom" required>
                         <input type="text" placeholder="Nom" required>
                     </div>
-                    <div class="form-row">
+                    <div class="formulaire-ligne">
                         <input type="email" placeholder="Email" required>
                         <input type="tel" placeholder="Téléphone" required>
                     </div>
-                    <input type="text" placeholder="Adresse" required>
-                    <div class="form-row">
+                    <input type="text" placeholder="Adresse" required class="formulaire-input-plein">
+                    <div class="formulaire-ligne">
                         <input type="text" placeholder="Ville" required>
                         <input type="text" placeholder="Pays" required>
                     </div>
                     
                     <h3>Options de livraison</h3>
-                    <div class="shipping-options">
-                        <label><input type="radio" name="shipping" value="standard" checked> Livraison standard</label>
-                        <label><input type="radio" name="shipping" value="express"> Livraison express</label>
+                    <div class="options-livraison">
+                        <label><input type="radio" name="livraison" value="standard" checked> Livraison standard</label>
+                        <label><input type="radio" name="livraison" value="express"> Livraison express (+50 MAD)</label>
                     </div>
 
                     <h3>Paiement (Démonstration)</h3>
-                    <p class="demo-notice">Ceci est une simulation. Aucun paiement réel ne sera traité.</p>
+                    <p class="notice-demo">Ceci est une simulation. Aucun paiement réel ne sera traité.</p>
                     
-                    <button type="submit" class="btn-primary full-width">VALIDER LA COMMANDE</button>
+                    <button type="submit" class="btn-principal plein-largeur">VALIDER LA COMMANDE</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Success Order Modal -->
-    <div id="success-modal" class="modal-overlay">
-        <div class="modal-content success-modal text-center">
-            <i class="fas fa-check-circle success-icon"></i>
+    <!-- MODALE SUCCÈS -->
+    <div id="modale-succes" class="modale-overlay">
+        <div class="modale-contenu modale-succes-contenu text-center">
+            <i class="fas fa-check-circle succes-icone"></i>
             <h2>Commande validée avec succès !</h2>
-            <p>Votre numéro de commande est le : <strong id="order-number"></strong></p>
-            <button class="btn-primary close-success" style="margin-top: 20px;">CONTINUER MES ACHATS</button>
+            <p>Votre numéro de commande est le : <strong id="numero-commande-texte"></strong></p>
+            <button class="btn-principal fermer-succes" style="margin-top: 20px;">CONTINUER MES ACHATS</button>
         </div>
     </div>
 
-    <div class="overlay-bg" id="overlay-bg"></div>
+    <div class="arriere-plan-overlay" id="arriere-plan-overlay"></div>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
