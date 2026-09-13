@@ -77,6 +77,101 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartToggle = document.getElementById('cart-toggle');
   const cartPanel = document.getElementById('cart-panel');
   const cartClose = document.getElementById('cart-close');
+  const cartCount = document.getElementById('cart-count');
+  const cartBody = document.getElementById('cart-panel-body');
+  const checkoutBtn = document.querySelector('.cart-panel-footer .btn');
+
+  let cart = [];
+
+  const formatPrice = (n) => `${n} DH`;
+
+  const renderCart = () => {
+    if (cart.length === 0) {
+      cartBody.innerHTML = '<p class="cart-empty">Votre panier est vide pour le moment.</p>';
+      checkoutBtn.disabled = true;
+      cartCount.textContent = '0';
+      return;
+    }
+
+    cartBody.innerHTML = '';
+    let total = 0;
+    let totalQty = 0;
+
+    cart.forEach((item, index) => {
+      total += item.price * item.qty;
+      totalQty += item.qty;
+
+      const row = document.createElement('div');
+      row.className = 'cart-item';
+      row.innerHTML = `
+        <div class="cart-item-info">
+          <p class="cart-item-name">${item.name}</p>
+          <p class="cart-item-price">${formatPrice(item.price)}</p>
+        </div>
+        <div class="cart-item-qty">
+          <button type="button" class="qty-btn" data-action="decrease" data-index="${index}" aria-label="Diminuer la quantité">−</button>
+          <span>${item.qty}</span>
+          <button type="button" class="qty-btn" data-action="increase" data-index="${index}" aria-label="Augmenter la quantité">+</button>
+        </div>
+        <button type="button" class="cart-item-remove" data-index="${index}" aria-label="Retirer l'article">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+        </button>
+      `;
+      cartBody.appendChild(row);
+    });
+
+    const totalRow = document.createElement('div');
+    totalRow.className = 'cart-total-row';
+    totalRow.innerHTML = `<span>Total</span><span>${formatPrice(total)}</span>`;
+    cartBody.appendChild(totalRow);
+
+    checkoutBtn.disabled = false;
+    cartCount.textContent = String(totalQty);
+  };
+
+  cartBody.addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    const index = Number(btn.dataset.index);
+    if (Number.isNaN(index)) return;
+
+    if (btn.classList.contains('cart-item-remove')) {
+      cart.splice(index, 1);
+    } else if (btn.dataset.action === 'increase') {
+      cart[index].qty += 1;
+    } else if (btn.dataset.action === 'decrease') {
+      cart[index].qty -= 1;
+      if (cart[index].qty <= 0) cart.splice(index, 1);
+    }
+    renderCart();
+  });
+
+  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('[data-name]');
+      const name = card.dataset.name;
+      const price = Number(card.dataset.price);
+
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+      renderCart();
+
+      btn.textContent = 'Ajouté ✓';
+      btn.classList.add('is-added');
+      setTimeout(() => {
+        btn.textContent = 'Ajouter au panier';
+        btn.classList.remove('is-added');
+      }, 1400);
+
+      openCart();
+    });
+  });
+
+  renderCart();
 
   const openCart = () => {
     cartPanel.classList.add('is-open');
