@@ -135,6 +135,7 @@ h1,h2,h3{
   mix-blend-mode:multiply;
 }
 .main-nav{justify-self:center;}
+.nav-logo{display:none;}
 .main-nav ul{display:flex;gap:40px;}
 .main-nav ul li:not(:last-child){margin-right:40px;}
 @supports (gap:1px){.main-nav ul li:not(:last-child){margin-right:0;}}
@@ -256,6 +257,11 @@ h1,h2,h3{
   font-size:.88rem;
   color:var(--beige);
 }
+.search-logo{
+  height:56px;
+  width:auto;
+  margin-bottom:8px;
+}
 
 /* ---------------------------------------------------------
    PANIER — panneau latéral
@@ -289,8 +295,10 @@ h1,h2,h3{
   justify-content:space-between;
   padding:28px 28px 20px;
   border-bottom:1px solid rgba(44,33,27,.12);
+  gap:16px;
 }
-.cart-panel-header h2{font-size:1.5rem;}
+.cart-panel-header h2{font-size:1.5rem;margin-right:auto;}
+.cart-logo{height:34px;width:auto;}
 .cart-panel-body{
   flex:1;
   padding:28px;
@@ -549,7 +557,13 @@ h1,h2,h3{
     transition:max-height .4s var(--ease);
     justify-self:stretch;
   }
-  .main-nav.open{max-height:360px;}
+  .main-nav.open{max-height:420px;}
+  .nav-logo{
+    display:block;
+    height:38px;
+    width:auto;
+    margin:20px auto 4px;
+  }
   .main-nav ul{
     flex-direction:column;
     gap:0;
